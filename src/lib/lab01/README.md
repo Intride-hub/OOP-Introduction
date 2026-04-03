@@ -75,7 +75,7 @@ class car():
 
     def start_engine(self):
         if self._fuel <= 0:
-            raise RuntimeError("Cannot start engine: no fuel")
+            raise RuntimeError("не может быть запущен, нет топлива")
         self._engine_on = True
 
     def stop_engine(self):
@@ -83,12 +83,12 @@ class car():
 
     def drive(self, distance):
         if not self._engine_on:
-            raise RuntimeError("Engine is off")
+            raise RuntimeError("двигатель включен")
 
         fuel_needed = distance // 10
 
         if fuel_needed > self._fuel:
-            raise RuntimeError("Not enough fuel")
+            raise RuntimeError("недостаточно топлива")
 
         self._fuel -= fuel_needed
 ```
