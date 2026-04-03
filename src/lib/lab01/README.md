@@ -135,4 +135,4 @@ car1.drive(50)
 print("Fuel left:", car1.fuel)
 
 ```
-![Задание 1](images/lab01_01.png)
+![Задание 1](lab01_01.png)
