@@ -34,8 +34,4 @@ car1.start_engine()
 car1.drive(50)
 print("Fuel left:", car1.fuel)
 
-
-Car32= car('sd', 2222, 222, 222)
-Car32.start_engine()
-
-Car32.drive(32)
+car1.__repr__
