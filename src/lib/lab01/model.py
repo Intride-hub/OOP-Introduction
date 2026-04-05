@@ -1,35 +1,17 @@
+from validators import _validate_brand, _validate_speed, _validate_capacity, _validate_fuel
+
+
 class car():
     category = "Transport"
 
     def __init__(self, brand: str, speed: int, capacity: int, fuel: int):
-        self._brand = self._validate_brand(brand)
-        self._speed = self._validate_speed(speed)
-        self._capacity = self._validate_capacity(capacity)
-        self._fuel = self._validate_fuel(fuel)
+        self._brand = _validate_brand(brand)
+        self._speed = _validate_speed(speed)
+        self._capacity = _validate_capacity(capacity)
+        self._fuel = _validate_fuel(fuel)
         self._engine_on =False
     
-
-
-    def _validate_brand(self,brand):
-        if not isinstance(brand, str) or brand.strip() == '':
-            raise ValueError("должно быть строкой, не должно быть пустым")
-        return brand 
-    
-    def _validate_speed(self,speed):
-        if not isinstance(speed, int) or speed<0:
-            raise ValueError('скорость не может быть меньше 0')       
-        return speed 
-    
-    def _validate_capacity(self, capacity):
-        if not isinstance(capacity, int) or capacity<0:
-            raise ValueError('вместимость > 0')
-        return capacity
-    
-    def _validate_fuel(self, fuel):
-        if not isinstance(fuel, int) or fuel <0:
-            raise ValueError('топливо>0')
-        return fuel
-    
+   
     @property
     def brand(self):
         return self._brand
@@ -40,7 +22,7 @@ class car():
     
     @speed.setter
     def speed(self, value):
-        self._speed = self._validate_speed(value)
+        self._speed = _validate_speed(value)
 
     @property
     def capacity(self):
@@ -81,4 +63,4 @@ class car():
             raise RuntimeError("недостаточно топлива")
 
         self._fuel -= fuel_needed
-    
+
