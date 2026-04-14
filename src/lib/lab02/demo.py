@@ -18,7 +18,6 @@ def scenario_1():
   
     print_section("СЦЕНАРИЙ 1: БАЗОВЫЕ ОПЕРАЦИИ С КОЛЛЕКЦИЕЙ")
 
-    # Создание нескольких объектов
     print_subsection("Создание автомобилей")
     car1 = Car(201, "Toyota Camry", 210, 5, 55)
     car2 = Car(202, "Honda Accord", 200, 5, 48)
@@ -31,7 +30,6 @@ def scenario_1():
     print(f"    {car3}")
     print(f"    {car4}")
 
-    # Создание коллекции и добавление объектов
     print_subsection("Добавление в коллекцию")
     fleet = Fleet()
     fleet.add(car1)
@@ -40,13 +38,12 @@ def scenario_1():
     fleet.add(car4)
     print(f"  Все автомобили добавлены в автопарк")
 
-    # Вывод всех элементов
+
     print_subsection("Вывод всех элементов коллекции")
     print(f"  Всего автомобилей: {len(fleet)}")
     for i, car in enumerate(fleet, 1):
         print(f"    {i}. {car}")
 
-    # Проверка
     print_subsection("Проверка: добавление объекта неправильного типа")
     try:
         fleet.add("Это не автомобиль, а строка")
@@ -60,19 +57,16 @@ def scenario_1():
     except TypeError as e:
         print(f"  ✅ Проверка типа сработала: {e}")
 
-    # Удаление элемента
     print_subsection("Удаление элемента")
     print(f"  Удаляем автомобиль: {car2}")
     fleet.remove(car2)
     print(f"  Автомобиль удалён")
 
-    # Повторный вывод коллекции
     print_subsection("Повторный вывод коллекции после удаления")
     print(f"  Всего автомобилей: {len(fleet)}")
     for i, car in enumerate(fleet, 1):
         print(f"    {i}. {car}")
 
-    # Проверка корректности удаления (попытка удалить несуществующий)
     print_subsection("Проверка: удаление несуществующего элемента")
     print(f"  Пытаемся удалить уже удалённый автомобиль: {car2}")
     fleet.remove(car2) 
@@ -85,7 +79,6 @@ def scenario_1():
 def scenario_2(fleet: Fleet):
     print_section("СЦЕНАРИЙ 2: ПОИСК, ИТЕРАЦИЯ И ОГРАНИЧЕНИЯ")
 
-    # ещё автомобилей для демонстрации
     car5 = Car(205, "BMW X5", 250, 5, 70)
     car6 = Car(206, "Audi Q7", 240, 7, 65)
     car7 = Car(207, "BMW M3", 290, 4, 40)
@@ -98,7 +91,6 @@ def scenario_2(fleet: Fleet):
         print(f"    {i}. {car}")
     print(f"  Всего: {len(fleet)} автомобилей")
 
-    # Поиск элемента по id
     print_subsection("Поиск по id")
     search_ids = [203, 999, 205]
     for sid in search_ids:
@@ -108,7 +100,6 @@ def scenario_2(fleet: Fleet):
         else:
             print(f"  Поиск id={sid}: ❌ не найден")
 
-    # Поиск по марке
     print_subsection("Поиск по марке")
     search_brands = ["BMW", "Toyota", "Lada"]
     for brand in search_brands:
@@ -120,12 +111,10 @@ def scenario_2(fleet: Fleet):
         else:
             print(f"  Поиск '{brand}': ❌ не найдено")
 
-    # Использование len()
     print_subsection("Использование len()")
     print(f"  Размер коллекции: {len(fleet)}")
     print(f"  (вызывается fleet.__len__())")
 
-    # Использование for
     print_subsection("Использование for")
     print("  Автомобили с запасом топлива > 50 л:")
     for car in fleet:
@@ -138,7 +127,6 @@ def scenario_2(fleet: Fleet):
     print(f"    Минимальная скорость: {min(speeds)} км/ч")
     print(f"    Средняя скорость: {sum(speeds) / len(speeds):.0f} км/ч")
 
-    # Ограничение на дубликаты
     print_subsection("Ограничение на дубликаты (по id)")
     print("  Пытаемся добавить автомобиль с существующим id=201")
     duplicate_car = Car(201, "Lada Vesta", 180, 5, 50)
@@ -157,7 +145,6 @@ def scenario_2(fleet: Fleet):
 def scenario_3(fleet: Fleet):
     print_section("СЦЕНАРИЙ 3: ИНДЕКСАЦИЯ, СОРТИРОВКА И ФИЛЬТРАЦИЯ")
 
-    # Индексация
     print_subsection("Индексация коллекции")
     print(f"  Первый автомобиль: {fleet[0]}")
     print(f"  Второй автомобиль: {fleet[1]}")
@@ -165,7 +152,6 @@ def scenario_3(fleet: Fleet):
     print(f"  Предпоследний автомобиль: {fleet[-2]}")
 
 
-    # Сортировка
     print_subsection("Сортировка по скорости (по возрастанию)")
     fleet.sort_by_speed()
     print("  После сортировки по скорости:")
@@ -178,7 +164,6 @@ def scenario_3(fleet: Fleet):
     for i, car in enumerate(fleet[:3], 1):
         print(f"    {i}. {car.brand}: {car.speed} км/ч")
 
-    # Запустим двигатели у некоторых автомобилей для фильтрации
     print_subsection("Подготовка к фильтрации")
     fleet[0].start_engine()    
     fleet[2].start_engine()  
@@ -189,7 +174,6 @@ def scenario_3(fleet: Fleet):
         if car.engine_on:
             print(f"    - {car.brand} (готов к поездке)")
 
-    # Фильтрация
     print_subsection("Фильтрация: автомобили с заведённым двигателем")
     running_cars = fleet.get_cars_with_engine_on()
     print(f"  Найдено {len(running_cars)} автомобиля(ей):")
@@ -202,14 +186,13 @@ def scenario_3(fleet: Fleet):
     for car in low_fuel_cars:
         print(f"    - {car.brand}: {car.fuel} л")
 
-    # Удаление по индексу
     print_subsection("Удаление по индексу")
     print(f"  Текущий размер коллекции: {len(fleet)}")
     print(f"  Удаляем автомобиль с индексом 2: {fleet[2]}")
     fleet.remove_at(2)
     print(f"  После удаления, размер коллекции: {len(fleet)}")
     print("  Оставшиеся автомобили:")
-    
+
     for i, car in enumerate(fleet, 1):
         print(f"    {i}. {car}")
 
@@ -217,16 +200,9 @@ def scenario_3(fleet: Fleet):
 
 
 def main():
-    # Сценарий 1: Базовые операции (оценка 3)
     fleet = scenario_1()
-
-    # Сценарий 2: Поиск и итерация (оценка 4)
     fleet = scenario_2(fleet)
-
-    # Сценарий 3: Индексация, сортировка, фильтрация (оценка 5)
     fleet = scenario_3(fleet)
-
-    
     
 if __name__ == "__main__":
     main()
