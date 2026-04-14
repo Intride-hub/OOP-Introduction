@@ -33,5 +33,3 @@ print("=== Работа состояния ===")
 car1.start_engine()
 car1.drive(50)
 print("Fuel left:", car1.fuel)
-
-car1.__repr__
