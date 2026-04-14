@@ -47,15 +47,15 @@ def scenario_1():
     print_subsection("Проверка: добавление объекта неправильного типа")
     try:
         fleet.add("Это не автомобиль, а строка")
-        print("  ❌ ОШИБКА: Неправильный объект был добавлен!")
+        print("   ОШИБКА: Неправильный объект был добавлен!")
     except TypeError as e:
-        print(f"  ✅ Проверка типа сработала: {e}")
+        print(f"   Проверка типа сработала: {e}")
 
     try:
         fleet.add(12345)
-        print("  ❌ ОШИБКА: Число было добавлено!")
+        print("   ОШИБКА: Число было добавлено!")
     except TypeError as e:
-        print(f"  ✅ Проверка типа сработала: {e}")
+        print(f"   Проверка типа сработала: {e}")
 
     print_subsection("Удаление элемента")
     print(f"  Удаляем автомобиль: {car2}")
@@ -70,7 +70,7 @@ def scenario_1():
     print_subsection("Проверка: удаление несуществующего элемента")
     print(f"  Пытаемся удалить уже удалённый автомобиль: {car2}")
     fleet.remove(car2) 
-    print(f"  ✅ Удаление отработало корректно, коллекция не изменилась")
+    print(f"   Удаление отработало корректно, коллекция не изменилась")
     print(f"  Текущий размер: {len(fleet)} автомобилей")
 
     return fleet
@@ -96,9 +96,9 @@ def scenario_2(fleet: Fleet):
     for sid in search_ids:
         result = fleet.find_by_id(sid)
         if result:
-            print(f"  Поиск id={sid}: ✅ {result}")
+            print(f"  Поиск id={sid}:  {result}")
         else:
-            print(f"  Поиск id={sid}: ❌ не найден")
+            print(f"  Поиск id={sid}:  не найден")
 
     print_subsection("Поиск по марке")
     search_brands = ["BMW", "Toyota", "Lada"]
@@ -109,7 +109,7 @@ def scenario_2(fleet: Fleet):
             for car in results:
                 print(f"      - {car}")
         else:
-            print(f"  Поиск '{brand}': ❌ не найдено")
+            print(f"  Поиск '{brand}':  не найдено")
 
     print_subsection("Использование len()")
     print(f"  Размер коллекции: {len(fleet)}")
@@ -133,9 +133,9 @@ def scenario_2(fleet: Fleet):
 
     try:
         fleet.add(duplicate_car)
-        print("  ❌ ОШИБКА: Дубликат добавлен!")
+        print("   ОШИБКА: Дубликат добавлен!")
     except ValueError as e:
-        print(f"  ✅ Ограничение сработало: {e}")
+        print(f"   Ограничение сработало: {e}")
 
     print(f"\n  Размер коллекции не изменился: {len(fleet)} автомобилей")
 
