@@ -14,10 +14,6 @@ def _validate_capacity(capacity):
     return capacity
     
 def _validate_fuel(fuel):
-    if not isinstance(fuel, int) or fuel <= 0:
+    if not isinstance(fuel, int) or fuel < 0:
         raise ValueError('топливо>0')   
     return fuel
-
-def _validate_id(car_id):
-    if not isinstance(car_id, int) or car_id<0:
-        raise ValueError('id должен быть >0, числом')

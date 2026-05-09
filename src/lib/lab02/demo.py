@@ -197,8 +197,7 @@ def scenario_3(fleet: Fleet):
         print(f"    {i}. {car}")
 
     return fleet
-
-
+    
 def main():
     fleet = scenario_1()
     fleet = scenario_2(fleet)

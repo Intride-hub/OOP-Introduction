@@ -6,7 +6,7 @@ class car():
 
     def __init__(self, brand: str, speed: int, capacity: int, fuel: int):
         self._brand = _validate_brand(brand)
-        self._speed = _validate_speed(speed)
+        self._speed = _validate_speed(speed) 
         self._capacity = _validate_capacity(capacity)
         self._fuel = _validate_fuel(fuel)
         self._engine_on =False
