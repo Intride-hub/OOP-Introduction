@@ -3,13 +3,9 @@ from models import ElectricCar, TruckCar, SportCar
 
 
 class Fleet:
-    """Коллекция автомобилей — расширенная версия из ЛР-2."""
-
     def __init__(self):
         self._cars: list[Car] = []
         self._id_set: set = set()
-
-    # ---------- базовые методы (ЛР-2) ----------
 
     def add(self, car: Car):
         if not isinstance(car, Car):
@@ -49,8 +45,6 @@ class Fleet:
 
     def sort_by_speed(self, reverse: bool = False):
         self._cars.sort(key=lambda c: c.speed, reverse=reverse)
-
-    # ---------- новые методы ЛР-3 (фильтрация по типу) ----------
 
     def get_only_electric(self) -> "Fleet":
         """Вернуть подкоэ с только электромобилями."""
