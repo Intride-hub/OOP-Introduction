@@ -1,10 +1,10 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-from lib.lab03.base import Car
-from lib.lab03.models import ElectricCar, TruckCar, SportCar
-from lib.lab03.collection import Fleet
+from base import Car
+from models import ElectricCar, TruckCar, SportCar
+from collection import Fleet
 
 
 def separator(title: str):
