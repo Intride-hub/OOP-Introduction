@@ -149,4 +149,3 @@ class SportCar(Car):
     def calculate(self) -> float:
         """Спортивный рейтинг: top_speed * (2 if turbo else 1)."""
         multiplier = 2.0 if self._turbo else 1.0
-        return round(self._top_speed * multiplier, 2)

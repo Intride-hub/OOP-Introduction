@@ -47,6 +47,7 @@ class Fleet:
         self._cars.sort(key=lambda c: c.speed, reverse=reverse)
 
     def get_only_electric(self) -> "Fleet":
+        """Вернуть подкоэ с только электромобилями."""
         result = Fleet()
         for car in self._cars:
             if isinstance(car, ElectricCar):
@@ -55,6 +56,7 @@ class Fleet:
         return result
 
     def get_only_trucks(self) -> "Fleet":
+        """Вернуть подпарк только из грузовиков."""
         result = Fleet()
         for car in self._cars:
             if isinstance(car, TruckCar):
@@ -63,6 +65,7 @@ class Fleet:
         return result
 
     def get_only_sport(self) -> "Fleet":
+        """Вернуть подпарк только из спорткаров."""
         result = Fleet()
         for car in self._cars:
             if isinstance(car, SportCar):

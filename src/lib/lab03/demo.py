@@ -7,6 +7,10 @@ from base import Car
 from models import ElectricCar, TruckCar, SportCar
 from collection import Fleet
 
+
+
+
+ 
 def separator(title: str):
     print(f"\n{'=' * 55}")
     print(f"  {title}")
@@ -101,4 +105,8 @@ scania.detach_trailer()
 print(f"  После отцепки: {scania.display()}")
 
 print("\nFerrari: включаем турбо (уже включено), repr:")
+
 print(f"  {repr(ferrari)}")
+
+print(f"  {repr(ferrari)}")
+

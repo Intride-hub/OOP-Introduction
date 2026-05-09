@@ -18,7 +18,7 @@ class Car:
         self._fuel = _validate_fuel(fuel)
         self._engine_on = False
 
-    #  свойства 
+    # ---------- свойства ----------
 
     @property
     def id(self):
@@ -48,7 +48,7 @@ class Car:
     def engine_on(self):
         return self._engine_on
 
-    #  бизнес-методы 
+    # ---------- бизнес-методы ----------
 
     def start_engine(self):
         if self._fuel <= 0:
@@ -66,7 +66,7 @@ class Car:
             raise RuntimeError("Недостаточно топлива для поездки")
         self._fuel -= fuel_needed
 
-    #  общий интерфейс (переопределяется в потомках) 
+    # ---------- общий интерфейс (переопределяется в потомках) ----------
 
     def display(self) -> str:
         """Единый интерфейс отображения объекта. Полиморфный метод."""
@@ -77,9 +77,10 @@ class Car:
         )
 
     def calculate(self) -> float:
+        """Общий интерфейс расчёта стоимости/потенциала. Полиморфный метод."""
         return float(self._speed * self._capacity)
 
-    #  магические методы 
+    # ---------- магические методы ----------
 
     def __str__(self):
         return self.display()
