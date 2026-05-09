@@ -58,69 +58,30 @@ Car  (base.py — базовый класс из ЛР-1/ЛР-2)
 
 Создаются 4 объекта разных типов. Метод `display()` переопределён в каждом классе:
 
-```
-[Car] BMW (id=1): 200 км/ч, 60 л, двигатель заглушен
-[ElectricCar] Tesla (id=2): 250 км/ч, батарея 100.0 кВт·ч, заряд 80.0%, двигатель заглушен
-[TruckCar] Scania (id=3): 120 км/ч, грузоп. 20000 кг, с прицепом, двигатель заглушен
-[SportCar] Ferrari (id=4): 320 км/ч, макс. 400 км/ч, TURBO, двигатель заглушен
-```
+![Сценарий1](/images/lab03/1.png)
 
 ### Сценарий 2 — Полиморфный `calculate()`
 
 Один и тот же метод вызывается для всех типов — разное поведение:
 
-```
-BMW          → calculate() = 1000.0
-Tesla        → calculate() = 800.0
-Scania       → calculate() = 2880000.0
-Ferrari      → calculate() = 800.0
-```
+![Сценарий1](/images/lab03/2.png)
 
 ### Сценарий 3 — `isinstance()` проверка типов
 
-```
-BMW         : Car=True, ElectricCar=False, TruckCar=False, SportCar=False
-Tesla       : Car=True, ElectricCar=True,  TruckCar=False, SportCar=False
-Scania      : Car=True, ElectricCar=False, TruckCar=True,  SportCar=False
-Ferrari     : Car=True, ElectricCar=False, TruckCar=False, SportCar=True
-```
+![Сценарий1](/images/lab03/3.png)
 
 ### Сценарий 4 — Коллекция `Fleet` и фильтрация по типу
 
-```
-Всего в автопарке: 4 машин
-
--- Только электромобили --
-  [ElectricCar] Tesla ...
-
--- Только грузовики --
-  [TruckCar] Scania ...
-
--- Только спорткары --
-  [SportCar] Ferrari ...
-```
+![Сценарий1](/images/lab03/4.png)
 
 ### Сценарий 5 — Полиморфизм без условий
 
 Единый цикл вызывает `display()` и `calculate()` без каких-либо `if type == ...`:
 
-```python
-for vehicle in fleet:
-    print(vehicle.display())   # разный вывод для каждого типа
-    print(vehicle.calculate()) # разный расчёт для каждого типа
-```
-
+![Сценарий1](/images/lab03/5.png)
 ### Сценарий 6 — Уникальные методы потомков
 
-```
-Tesla: заряжаем батарею +15%
-  До зарядки:  заряд 80.0%
-  После зарядки: заряд 95.0%
-
-Scania: прицепляем/отцепляем прицеп
-  До: [TruckCar] Scania (id=3): 120 км/ч, грузоп. 20000 кг, с прицепом ...
-  После отцепки: [TruckCar] Scania (id=3): 120 км/ч, грузоп. 20000 кг, без прицепа ...
-```
+![Сценарий1](/images/lab03/6.png)
 
 ---
 
