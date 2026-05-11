@@ -2,7 +2,7 @@
 
 ## 1. Цель работы
 
-Изучить механизм **абстрактных базовых классов (ABC)** в Python. Освоить:
+Изучить механизм **абстрактных базовых классов (ABC)**. Освоить:
 - создание интерфейсов через `ABC` и `@abstractmethod`;
 - множественную реализацию интерфейсов;
 - использование интерфейса как типа в функциях и коллекциях;
@@ -32,11 +32,7 @@
 | `ElectricCar` | `Printable`, `Comparable`, `Diagnosable` | По запасу хода (км) |
 | `Truck` | `Printable`, `Comparable`, `Diagnosable` | По грузоподъёмности (т) |
 
-Каждый класс реализует интерфейсы **по-своему** — полиморфизм без `if`-ветвлений.
-
-`VehicleCollection` расширяет коллекцию методами:
-- `get_printable()`, `get_comparable()`, `get_diagnosable()` — фильтрация по интерфейсу
-- `print_all()`, `diagnose_all()`, `sort_by_compare()` — архитектурные методы
+`VehicleCollection` расширяет коллекцию методами `get_printable()`, `get_comparable()`, `get_diagnosable()`, `print_all()`, `diagnose_all()`, `sort_by_compare()`.
 
 ---
 

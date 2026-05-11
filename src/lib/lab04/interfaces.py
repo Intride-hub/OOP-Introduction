@@ -6,7 +6,6 @@ class Printable(ABC):
 
     @abstractmethod
     def to_string(self) -> str:
-        """Возвращает строковое представление объекта."""
         ...
 
 
@@ -15,19 +14,13 @@ class Comparable(ABC):
 
     @abstractmethod
     def compare_to(self, other: "Comparable") -> int:
-        """
-        Возвращает:
-          -1 — если self < other
-           0 — если self == other
-           1 — если self > other
-        """
+        """Возвращает: -1 | 0 | 1"""
         ...
 
 
 class Diagnosable(ABC):
-    """Интерфейс: объект умеет вернуть диагностическую информацию."""
+    """Интерфейс: объект умеет вернуть техническое состояние."""
 
     @abstractmethod
     def diagnose(self) -> dict:
-        """Возвращает словарь с техническим состоянием объекта."""
         ...

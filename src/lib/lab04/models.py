@@ -1,3 +1,8 @@
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 from interfaces import Printable, Comparable, Diagnosable
 
 
@@ -57,16 +62,11 @@ class BrakeSystem:
 
 
 # ──────────────────────────────────────────────
-# Основные модели, реализующие интерфейсы
+# Классы с интерфейсами
 # ──────────────────────────────────────────────
 
 class Car(Printable, Comparable, Diagnosable):
-    """
-    Автомобиль реализует три интерфейса:
-      - Printable  -> to_string()
-      - Comparable -> compare_to() по мощности двигателя
-      - Diagnosable -> diagnose()
-    """
+    """Автомобиль. Comparable по мощности двигателя."""
 
     def __init__(self, brand: str, model: str, engine: Engine,
                  fuel_tank: FuelTank, brakes: BrakeSystem):
@@ -87,9 +87,11 @@ class Car(Printable, Comparable, Diagnosable):
         return (a > b) - (a < b)
 
     def diagnose(self) -> dict:
-        return {"engine": self._engine.diagnose(),
-                "fuel_tank": self._fuel_tank.diagnose(),
-                "brakes": self._brakes.diagnose()}
+        return {
+            "engine": self._engine.diagnose(),
+            "fuel_tank": self._fuel_tank.diagnose(),
+            "brakes": self._brakes.diagnose(),
+        }
 
     def start(self) -> None:
         self._engine.start()
@@ -127,9 +129,11 @@ class ElectricCar(Printable, Comparable, Diagnosable):
         return (a > b) - (a < b)
 
     def diagnose(self) -> dict:
-        return {"battery_kwh": self.battery_kwh,
-                "km_range": self.km_range,
-                "charge_pct": self.charge_pct}
+        return {
+            "battery_kwh": self.battery_kwh,
+            "km_range": self.km_range,
+            "charge_pct": self.charge_pct,
+        }
 
     def charge(self, pct: int) -> None:
         self.charge_pct = min(100, self.charge_pct + pct)
@@ -157,17 +161,19 @@ class Truck(Printable, Comparable, Diagnosable):
         return (a > b) - (a < b)
 
     def diagnose(self) -> dict:
-        return {"engine": self._engine.diagnose(),
-                "fuel_tank": self._fuel_tank.diagnose(),
-                "payload_ton": self.payload_ton}
+        return {
+            "engine": self._engine.diagnose(),
+            "fuel_tank": self._fuel_tank.diagnose(),
+            "payload_ton": self.payload_ton,
+        }
 
 
 # ──────────────────────────────────────────────
-# Коллекция с поддержкой интерфейсов
+# Коллекция
 # ──────────────────────────────────────────────
 
 class VehicleCollection:
-    """Коллекция транспортных средств с поддержкой интерфейсов."""
+    """Коллекция с поддержкой фильтрации по интерфейсу."""
 
     def __init__(self):
         self._items: list = []
